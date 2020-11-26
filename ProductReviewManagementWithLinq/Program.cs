@@ -41,7 +41,7 @@ namespace ProductReviewManagementWithLinq
                 new ProductReview(){ ProductID = 24, UserID = 20, Rating = 5, Review = "Good", isLike = false},
                 new ProductReview(){ ProductID = 25, UserID = 20, Rating = 5, Review = "Good", isLike = false},
             };
-            /// Iterating through list
+            /// Iterating through list.
             foreach(var list in productReviewList)
             {
                 Console.WriteLine("ProductId :-"+list.ProductID +" "+"UserId :-"+list.UserID +" "+"Rating :-"+" "+list.Rating +" "

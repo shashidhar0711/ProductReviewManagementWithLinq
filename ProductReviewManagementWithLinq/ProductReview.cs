@@ -5,7 +5,7 @@ using System.Text;
 namespace ProductReviewManagementWithLinq
 {
     /// <summary>
-    /// Gettes and setters of class
+    /// Gettes and setters of class.
     /// </summary>
     public class ProductReview
     {

@@ -43,6 +43,7 @@ namespace ProductReviewManagementWithLinq
                 new ProductReview(){ ProductId = 24, UserId = 20, Rating = 5, Review = "Good", isLike = false},
                 new ProductReview(){ ProductId = 25, UserId = 20, Rating = 5, Review = "Good", isLike = false},
             };
+            /// UC1
             ///Iterating through list.
             foreach (var list in productReviewList)
             {
@@ -50,8 +51,9 @@ namespace ProductReviewManagementWithLinq
                 + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             }
 
-            /// To Retrieve top three records with having high ratings
-            productManagement.GetTopThreeRecords(productReviewList);
+            /// To Retrieve top three records with having high ratings.
+            //productManagement.GetTopThreeRecords(productReviewList);
+            productManagement.GetRecordsGreaterThanThree(productReviewList);
 
         }
     }

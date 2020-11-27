@@ -163,8 +163,8 @@ namespace ProductReviewManagementWithLinq
                 Console.WriteLine("ProductId : " + products.Field<int>("ProductId") 
                                     +" UserId : "+products.Field<int>("userId")
                                     +" Rating : " + products.Field<int>("Rating")
-                                    +"  Review : " + products.Field<string>("Review")
-                                    +"  IsLike : " + products.Field<bool>("isLike"));
+                                    +" Review : " + products.Field<string>("Review")
+                                    +" IsLike : " + products.Field<bool>("isLike"));
             }
         }
 
@@ -202,8 +202,8 @@ namespace ProductReviewManagementWithLinq
                 Console.WriteLine("ProductId : " + products.Field<int>("ProductId")
                                     + " UserId : " + products.Field<int>("userId")
                                     + " Rating : " + products.Field<int>("Rating")
-                                    + "  Review : " + products.Field<string>("Review")
-                                    + "  IsLike : " + products.Field<bool>("isLike"));
+                                    + " Review : " + products.Field<string>("Review")
+                                    + " IsLike : " + products.Field<bool>("isLike"));
             }
         }
 

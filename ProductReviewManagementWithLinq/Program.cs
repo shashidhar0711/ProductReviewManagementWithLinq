@@ -50,8 +50,8 @@ namespace ProductReviewManagementWithLinq
             //    Console.WriteLine("ProductId :-" + list.ProductId + " " + "UserId:-" + list.UserId + " " + "Rating :-" + " " + list.Rating + " "
             //    + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             //}
-            /// Retrieve all records whose isLike is must be true to print
-            productManagement.RetrieveDataFromTable();
+            /// Retrieve average ratings of product id
+            productManagement.ToFindAverageRatingByProductID();
         }
     }
 }

@@ -152,7 +152,7 @@ namespace ProductReviewManagementWithLinq
         /// UC8
         /// Retrieves the data from table.
         /// </summary>
-/        public void RetrieveDataFromTable()
+        public void RetrieveDataFromTable()
         {
             var recordData = from products in dataTable.AsEnumerable()
                              where (products.Field<bool>("isLike") == true)
@@ -165,6 +165,26 @@ namespace ProductReviewManagementWithLinq
                                     +" Rating : " + products.Field<int>("Rating")
                                     +"  Review : " + products.Field<string>("Review")
                                     +"  IsLike : " + products.Field<bool>("isLike"));
+            }
+        }
+
+        /// <summary>
+        /// UC9
+        /// Converts to findaverageratingbyproductid.
+        /// </summary>
+        public void ToFindAverageRatingByProductID()
+        {
+            var Data = dataTable.AsEnumerable()
+                       .GroupBy(product => product.Field<int>("ProductID"))
+                       .Select(product => new
+                       {
+                           ProductID = product.Key,
+                           Ratings = product.Average(product => product.Field<int>("Rating"))
+                       });
+
+            foreach (var dataItem in Data)
+            {
+                Console.WriteLine("Product Id: " + dataItem.ProductID + " " + "Average: " + dataItem.Ratings);
             }
         }
     }

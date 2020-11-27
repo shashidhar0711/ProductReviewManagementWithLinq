@@ -44,16 +44,14 @@ namespace ProductReviewManagementWithLinq
                 new ProductReview(){ ProductId = 25, UserId = 20, Rating = 5, Review = "Good", isLike = false},
             };
             /// UC1
-            ///Iterating through list.
+            /// Iterating through list.
             foreach (var list in productReviewList)
             {
                 Console.WriteLine("ProductId :-" + list.ProductId + " " + "UserId:-" + list.UserId + " " + "Rating :-" + " " + list.Rating + " "
                 + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             }
-
-            /// To Retrieve all records except top five records
-            productManagement.GetAllRecordsExceptTopFiveRecords(productReviewList);
-
+            /// Calling method to create data table
+            productManagement.CreateNewDataTable();
         }
     }
 }

@@ -45,13 +45,13 @@ namespace ProductReviewManagementWithLinq
             };
             /// UC1
             /// Iterating through list.
-            foreach (var list in productReviewList)
-            {
-                Console.WriteLine("ProductId :-" + list.ProductId + " " + "UserId:-" + list.UserId + " " + "Rating :-" + " " + list.Rating + " "
-                + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
-            }
-            /// Calling method to create data table
-            productManagement.CreateNewDataTable();
+            //foreach (var list in productReviewList)
+            //{
+            //    Console.WriteLine("ProductId :-" + list.ProductId + " " + "UserId:-" + list.UserId + " " + "Rating :-" + " " + list.Rating + " "
+            //    + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
+            //}
+            /// Retrieve all records whose isLike is must be true to print
+            productManagement.RetrieveDataFromTable();
         }
     }
 }

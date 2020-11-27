@@ -8,7 +8,7 @@ namespace ProductReviewManagementWithLinq
 {
     public class ProductManagement
     {
-        DataTable dataTable = new DataTable();
+        public readonly DataTable dataTable = new DataTable();
         /// <summary>
         /// UC2
         /// Gets the top three records.
@@ -111,41 +111,61 @@ namespace ProductReviewManagementWithLinq
         /// UC7
         /// Creates the new data table.
         /// </summary>
-        public void CreateNewDataTable()
+        public ProductManagement()
         {
             /// Creating columns
             dataTable.Columns.Add("ProductId", typeof(int));
             dataTable.Columns.Add("UserId", typeof(int));
             dataTable.Columns.Add("Rating", typeof(int));
             dataTable.Columns.Add("Review", typeof(string));
-            dataTable.Columns.Add("isLike", typeof(string));
+            dataTable.Columns.Add("isLike", typeof(bool));
 
             /// Creating rows and adding values into column wise
-            dataTable.Rows.Add(1, 1, 5, "good", "true");
-            dataTable.Rows.Add(2, 2, 3, "better", "true");
-            dataTable.Rows.Add(3, 3, 5, "good", "true");
-            dataTable.Rows.Add(4, 4, 4, "nice", "true");
-            dataTable.Rows.Add(5, 5, 3, "better", "true");
-            dataTable.Rows.Add(6, 6, 5, "good", "false");
-            dataTable.Rows.Add(7, 7, 5, "good", "true");
-            dataTable.Rows.Add(8, 7, 5, "better", "true");
-            dataTable.Rows.Add(9, 8, 3, "good", "true");
-            dataTable.Rows.Add(10, 9, 5, "good", "true");
-            dataTable.Rows.Add(11, 10, 3, "better", "true");
-            dataTable.Rows.Add(12, 10, 4, "nice", "false");
-            dataTable.Rows.Add(13, 11, 3, "better", "true");
-            dataTable.Rows.Add(14, 11, 4, "good", "true");
-            dataTable.Rows.Add(15, 11, 5, "good", "true");
-            dataTable.Rows.Add(16, 11, 5, "good", "true");
-            dataTable.Rows.Add(17, 11, 3, "better", "true");
-            dataTable.Rows.Add(18, 12, 4, "nice", "true");
-            dataTable.Rows.Add(19, 15, 5, "good", "true");
-            dataTable.Rows.Add(20, 16, 5, "good", "true");
-            dataTable.Rows.Add(21, 17, 5, "good", "true");
-            dataTable.Rows.Add(22, 11, 4, "nice", "true");
-            dataTable.Rows.Add(23, 18, 3, "better", "false");
-            dataTable.Rows.Add(24, 19, 4, "nice", "true");
-            dataTable.Rows.Add(25, 20, 4, "nice", "true");
+            dataTable.Rows.Add(1, 1, 5, "good", true);
+            dataTable.Rows.Add(2, 2, 3, "better", false);
+            dataTable.Rows.Add(3, 3, 5, "good", true);
+            dataTable.Rows.Add(4, 4, 4, "nice", false);
+            dataTable.Rows.Add(5, 5, 3, "better", true);
+            dataTable.Rows.Add(6, 6, 5, "good", false);
+            dataTable.Rows.Add(7, 7, 5, "good", true);
+            dataTable.Rows.Add(8, 7, 5, "better", true);
+            dataTable.Rows.Add(9, 8, 3, "good", true);
+            dataTable.Rows.Add(10, 9, 5, "good", true);
+            dataTable.Rows.Add(11, 10, 3, "better", true);
+            dataTable.Rows.Add(12, 10, 4, "nice", false);
+            dataTable.Rows.Add(13, 11, 3, "better", true);
+            dataTable.Rows.Add(14, 11, 4, "good", true);
+            dataTable.Rows.Add(15, 11, 5, "good", false);
+            dataTable.Rows.Add(16, 11, 5, "good", true);
+            dataTable.Rows.Add(17, 11, 3, "better", true);
+            dataTable.Rows.Add(18, 12, 4, "nice", true);
+            dataTable.Rows.Add(19, 15, 5, "good", true);
+            dataTable.Rows.Add(20, 16, 5, "good", false);
+            dataTable.Rows.Add(21, 17, 5, "good", true);
+            dataTable.Rows.Add(22, 11, 4, "nice", true);
+            dataTable.Rows.Add(23, 18, 3, "better",false);
+            dataTable.Rows.Add(24, 19, 4, "nice", true);
+            dataTable.Rows.Add(25, 20, 4, "nice", true);
+        }
+
+        /// <summary>
+        /// UC8
+        /// Retrieves the data from table.
+        /// </summary>
+/        public void RetrieveDataFromTable()
+        {
+            var recordData = from products in dataTable.AsEnumerable()
+                             where (products.Field<bool>("isLike") == true)
+                             select products;
+
+            foreach (var products in recordData)
+            {
+                Console.WriteLine("ProductId : " + products.Field<int>("ProductId") 
+                                    +" UserId : "+products.Field<int>("userId")
+                                    +" Rating : " + products.Field<int>("Rating")
+                                    +"  Review : " + products.Field<string>("Review")
+                                    +"  IsLike : " + products.Field<bool>("isLike"));
+            }
         }
     }
 }

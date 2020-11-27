@@ -33,7 +33,7 @@ namespace ProductReviewManagementWithLinq
         /// <param name="productReviewList">The product review list.</param>
         public void GetRecordsGreaterThanThree(List<ProductReview> productReviewList)
         {
-            /// Linq query to retrieve top three having high ratings
+            /// Linq query to retrieve records with given condition
             var recordedData = (from products in productReviewList
                                 where (products.Rating>3) && (products.ProductId == 1 || products.ProductId == 4 || products.ProductId == 9)
                                 select products);

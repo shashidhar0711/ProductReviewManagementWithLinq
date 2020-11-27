@@ -51,9 +51,8 @@ namespace ProductReviewManagementWithLinq
                 + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             }
 
-            /// To Retrieve top three records with having high ratings.
-            //productManagement.GetTopThreeRecords(productReviewList);
-            productManagement.GetRecordsGreaterThanThree(productReviewList);
+            /// To Retrieve total count of reviews
+            productManagement.GetCountOfReviews(productReviewList);
 
         }
     }

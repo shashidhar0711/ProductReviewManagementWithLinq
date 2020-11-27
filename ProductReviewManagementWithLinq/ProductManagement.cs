@@ -44,5 +44,26 @@ namespace ProductReviewManagementWithLinq
                 + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             }
         }
+
+        /// <summary>
+        /// UC4
+        /// Gets the count of reviews.
+        /// </summary>
+        /// <param name="productReviewList">The product review list.</param>
+        public void GetCountOfReviews(List<ProductReview> productReviewList)
+        {
+            /// Linq query to retrieve records with given condition
+            var recordedReviewCount = (from products in productReviewList
+                                group products by products.ProductId into g
+                                select new
+                                {
+                                    productId = g.Key,
+                                    TotalCount = g.Count()
+                                });
+            foreach (var list in recordedReviewCount)
+            {
+                Console.WriteLine("Review Count : "+list.TotalCount);
+            }
+        }
     }
 }

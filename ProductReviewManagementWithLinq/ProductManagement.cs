@@ -82,7 +82,26 @@ namespace ProductReviewManagementWithLinq
                                        });
             foreach (var list in recordedReviewCount)
             {
-                Console.WriteLine("ProductId : " + list.productId+ "\t"+"Review :"+list.Review);
+                Console.WriteLine("ProductId : " + list.productId + "\t" + "Review :" + list.Review);
+            }
+        }
+
+        /// <summary>
+        /// UC6
+        /// Gets all records except top five records.
+        /// </summary>
+        /// <param name="productReviewList">The product review list.</param>
+        public void GetAllRecordsExceptTopFiveRecords(List<ProductReview> productReviewList)
+        {
+            /// Linq query to retrieve all records except top five records
+            var recordedReviewCount = (from product in productReviewList
+                                       orderby product.ProductId
+                                       select product).Skip(5);
+            Console.WriteLine("-------------------------------------------------------------------");
+            foreach (var list in recordedReviewCount)
+            {
+                Console.WriteLine("ProductId :-" + list.ProductId + " " + "UserId:-" + list.UserId + " " + "Rating :-" + " " + list.Rating + " "
+                + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             }
         }
     }

@@ -51,8 +51,8 @@ namespace ProductReviewManagementWithLinq
                 + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             }
 
-            /// To Retrieve total count of reviews
-            productManagement.GetCountOfReviews(productReviewList);
+            /// To Retrieve total product id and review
+            productManagement.GetProductIdAndReview(productReviewList);
 
         }
     }

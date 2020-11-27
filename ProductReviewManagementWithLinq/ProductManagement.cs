@@ -133,16 +133,16 @@ namespace ProductReviewManagementWithLinq
             dataTable.Rows.Add(10, 9, 5, "good", true);
             dataTable.Rows.Add(11, 10, 3, "better", true);
             dataTable.Rows.Add(12, 10, 4, "nice", false);
-            dataTable.Rows.Add(13, 11, 3, "better", true);
-            dataTable.Rows.Add(14, 11, 4, "good", true);
-            dataTable.Rows.Add(15, 11, 5, "good", false);
+            dataTable.Rows.Add(13, 10, 3, "better", true);
+            dataTable.Rows.Add(14, 10, 4, "good", true);
+            dataTable.Rows.Add(15, 10, 5, "good", false);
             dataTable.Rows.Add(16, 11, 5, "good", true);
             dataTable.Rows.Add(17, 11, 3, "better", true);
             dataTable.Rows.Add(18, 12, 4, "nice", true);
             dataTable.Rows.Add(19, 15, 5, "good", true);
             dataTable.Rows.Add(20, 16, 5, "good", false);
             dataTable.Rows.Add(21, 17, 5, "good", true);
-            dataTable.Rows.Add(22, 11, 4, "nice", true);
+            dataTable.Rows.Add(22, 10, 4, "nice", true);
             dataTable.Rows.Add(23, 18, 3, "better",false);
             dataTable.Rows.Add(24, 19, 4, "nice", true);
             dataTable.Rows.Add(25, 20, 4, "nice", true);
@@ -163,8 +163,8 @@ namespace ProductReviewManagementWithLinq
                 Console.WriteLine("ProductId : " + products.Field<int>("ProductId") 
                                     +" UserId : "+products.Field<int>("userId")
                                     +" Rating : " + products.Field<int>("Rating")
-                                    +"  Review : " + products.Field<string>("Review")
-                                    +"  IsLike : " + products.Field<bool>("isLike"));
+                                    +" Review : " + products.Field<string>("Review")
+                                    +" IsLike : " + products.Field<bool>("isLike"));
             }
         }
 
@@ -202,8 +202,29 @@ namespace ProductReviewManagementWithLinq
                 Console.WriteLine("ProductId : " + products.Field<int>("ProductId")
                                     + " UserId : " + products.Field<int>("userId")
                                     + " Rating : " + products.Field<int>("Rating")
-                                    + "  Review : " + products.Field<string>("Review")
-                                    + "  IsLike : " + products.Field<bool>("isLike"));
+                                    + " Review : " + products.Field<string>("Review")
+                                    + " IsLike : " + products.Field<bool>("isLike"));
+            }
+        }
+
+        /// <summary>
+        /// UC11
+        /// Retrieves the records having same user idwith ratings.
+        /// </summary>
+        public void RetrieveRecordsHavingSameUserIdwithRatings()
+        {
+            var recordedData = dataTable.AsEnumerable()
+                .OrderBy(products => products.Field<int>("Rating"))
+                .Where(products => products.Field<int>("userId") == 10)
+                .Select(products => new 
+                { 
+                    SameUserId = products.Field<int>("userId"), 
+                    Rating = products.Field<int>("Rating") 
+                });
+
+            foreach (var products in recordedData)
+            {
+                Console.WriteLine("SameUserId : " + products.SameUserId +" "+ " Ratings : " + products.Rating);
             }
         }
     }

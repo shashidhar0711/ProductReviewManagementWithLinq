@@ -50,8 +50,9 @@ namespace ProductReviewManagementWithLinq
             //    Console.WriteLine("ProductId :-" + list.ProductId + " " + "UserId:-" + list.UserId + " " + "Rating :-" + " " + list.Rating + " "
             //    + "Review :-" + list.Review + " " + "isLike :-" + list.isLike);
             //}
-            /// Retrieve review field which is having nice message
-            productManagement.RetrieveFieldOfReview();
+
+            /// Retrieve records Having same user id with ratings
+            productManagement.RetrieveRecordsHavingSameUserIdwithRatings();
         }
     }
 }
